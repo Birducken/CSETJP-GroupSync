@@ -132,7 +132,7 @@ export default function TaskCreationModal({ modalVisible, setModalVisible, group
                   }
                   if(groupID !== undefined){
                     //REGISTER NORMAL TASK TO GROUP
-
+                    registerGroupTask(taskToAdd, User, groupID);
 
                   }else{
                     //REGISTER NORMAL TASK TO USER
@@ -148,9 +148,40 @@ export default function TaskCreationModal({ modalVisible, setModalVisible, group
       </Modal>
   );
 }
+async function registerGroupTask(inputTask : Tasks.Task, userID : string, groupID : Number){ 
+  try{
+    let dateToParse = inputTask.dueDate;
+          const pad = (num : Number) => num.toString().padStart(2, '0');
+          const toSend = `${pad(dateToParse.getFullYear())}-${pad(dateToParse.getMonth() + 1)}-${pad(dateToParse.getDate())} ${pad(dateToParse.getHours())}:${pad(dateToParse.getMinutes())}:${pad(dateToParse.getSeconds())}`;
+          console.log(toSend);
+    console.log(toSend);
 
+    let fetchBody = {
+      taskName : inputTask.title,
+      taskDesc : inputTask.description,
+      taskAuthor : userID,
+      ...(inputTask.dueDate && {dueDate : dateToParse}),
+      grouptaskgroup : groupID
+    }
+    
+    console.log(fetchBody);
+    const response = await fetch(TaskURL, {
+      method : 'POST',
+      body: JSON.stringify(fetchBody)
+    });
+
+    if(!response.ok){
+      throw new Error("Error registering task.");
+    }
+
+    const json = response;
+    console.log(response.text);
+    return json;
+  }catch{
+
+  }
+}
 async function registerTask(inputTask : Tasks.Task, userID : string){ 
-  
     try{
       let dateToParse = inputTask.dueDate;
             const pad = (num : Number) => num.toString().padStart(2, '0');
@@ -181,7 +212,6 @@ async function registerTask(inputTask : Tasks.Task, userID : string){
     }catch{
 
     }
-  
 }
 
 const paperTheme = {

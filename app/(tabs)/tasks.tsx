@@ -122,7 +122,7 @@ export default function Index() {
             visible={menuVisible}
             onDismiss={() => setMenuVisible(false)}
             anchor={
-              <Button mode="contained" onPress={()=>{setModalVisible(true);}}>
+              <Button mode="contained" onPress={()=>{setMenuVisible(true);}}>
                 Sort By
               </Button>
             }
