@@ -6,7 +6,7 @@ const TaskURL = "https://bxgjv0771m.execute-api.us-east-2.amazonaws.com/groupsyn
 const GroupURL = "https://bxgjv0771m.execute-api.us-east-2.amazonaws.com/groupsync/GroupFunction"
 const GroupTaskURL = "https://bxgjv0771m.execute-api.us-east-2.amazonaws.com/groupsync/groupTasks"
 
-export const [groups, setGroups] = useState<Groups.Group[]>([]);
+
 
 //TODO: REFACTOR THIS TO USE A BACKEND LOOP OF STUFF. THIS WHOLE SECTION BELOW WILL BE TOSSED.
 export async function getTasksForGroup(_groupID : Number) : Promise<Number[]>{
