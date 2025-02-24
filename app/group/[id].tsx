@@ -2,7 +2,6 @@ import { useThemeColor } from "@/hooks/useThemeColor";
 import { useLocalSearchParams } from "expo-router";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
 import { Card, IconButton } from "react-native-paper";
-import * as Tasks from '@/services/tasks';
 import TaskView from "@/components/TaskView";
 import { Dropdown, MultiSelect } from "react-native-element-dropdown";
 import { useState } from "react";

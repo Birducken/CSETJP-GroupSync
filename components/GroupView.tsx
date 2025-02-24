@@ -1,5 +1,6 @@
 import { View, StyleSheet, Text, Pressable } from "react-native"
 
+import {GetGroups} from "@/services/globalVariables"
 import * as Groups from "@/services/groups"
 import { useThemeColor } from "@/hooks/useThemeColor";
 import { Link } from "expo-router";
